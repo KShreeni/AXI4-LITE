@@ -157,14 +157,14 @@ module axi_ledseg_irq #(
                                 if (S_WSTRB[1]) led_reg[15:8] <= S_WDATA[15:8]; 
                                 if (S_WSTRB[2]) led_reg[23:16] <= S_WDATA[23:16]; 
                                 if (S_WSTRB[3]) led_reg[31:24] <= S_WDATA[31:24];
-                                LED_OUT <= S_WDATA[7:0];
+                               // LED_OUT <= S_WDATA[7:0];
                             end
                             32'h4: begin
                                 if (S_WSTRB[0]) sevenseg_reg[7:0] <= S_WDATA[7:0]; 
                                 if (S_WSTRB[1]) sevenseg_reg[15:8] <= S_WDATA[15:8]; 
                                 if (S_WSTRB[2]) sevenseg_reg[23:16] <= S_WDATA[23:16]; 
                                 if (S_WSTRB[3]) sevenseg_reg[31:24] <= S_WDATA[31:24];
-                                SEVENSEG_OUT <= S_WDATA[7:0];
+                                //SEVENSEG_OUT <= S_WDATA[7:0];
                             end
                             32'h8: begin
                                 if (S_WDATA[0])
@@ -175,10 +175,12 @@ module axi_ledseg_irq #(
                                 led_reg <= 0;
                                 sevenseg_reg <= 0;
                                 irq_status_reg <= 0;
-                                LED_OUT <= 0;
-                                SEVENSEG_OUT <= 0;
+//                                LED_OUT <= 0;
+//                                SEVENSEG_OUT <= 0;
                             end
                         endcase
+                        LED_OUT <= led_reg[7:0];
+                        SEVENSEG_OUT <= sevenseg_reg[7:0];
                     end
                 end
 
