@@ -172,9 +172,9 @@ module axi_ledseg_irq #(
                             end
                             
                             default : begin
-                                led_reg <= 0;
-                                sevenseg_reg <= 0;
-                                irq_status_reg <= 0;
+                                led_reg <= led_reg;
+                                sevenseg_reg <= sevenseg_reg;
+                                irq_status_reg <= irq_status_reg;
 //                                LED_OUT <= 0;
 //                                SEVENSEG_OUT <= 0;
                             end
